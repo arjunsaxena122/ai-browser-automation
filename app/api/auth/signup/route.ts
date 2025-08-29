@@ -60,10 +60,12 @@ export async function POST(req: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "";
+
     return NextResponse.json(
       {
-        error: error.message,
+        error: message,
         message: "Internal server failed",
       },
       { status: 500 }

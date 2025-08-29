@@ -71,10 +71,12 @@ export async function POST(req: NextRequest) {
     response.cookies.set("accessToken", accessToken, options);
 
     return response;
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "";
+
     return NextResponse.json(
       {
-        error: error.message,
+        error: message,
         message: "Internal server failed",
       },
       { status: 500 }

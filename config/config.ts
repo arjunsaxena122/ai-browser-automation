@@ -12,6 +12,11 @@ const envSchema = z.object({
   ACCESS_TOKEN_KEY_EXPIRY: z.string(),
   REFRESH_TOKEN_KEY: z.string(),
   REFRESH_TOKEN_KEY_EXPIRY: z.string(),
+  GEMINI_BASE_URL: z.string(),
+  GEMINI_API_KEY: z.string(),
+  GEMINI_MODEL_NAME: z.string(),
+  OPENAI_API_KEY: z.string(),
+  OPENAI_MODEL_NAME: z.string(),
 });
 
 const createEnv = (env: NodeJS.ProcessEnv) => {

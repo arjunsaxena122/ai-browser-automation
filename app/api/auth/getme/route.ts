@@ -26,10 +26,12 @@ export async function GET(req: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "";
+
     return NextResponse.json(
       {
-        error: error.message,
+        error: message,
         message: "Internal server failed",
       },
       { status: 500 }
